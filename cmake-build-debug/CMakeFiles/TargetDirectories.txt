@@ -1,3 +1,0 @@
-/Users/leandrocamilo/Documents/Dev/printf/cmake-build-debug/CMakeFiles/printf.dir
-/Users/leandrocamilo/Documents/Dev/printf/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/leandrocamilo/Documents/Dev/printf/cmake-build-debug/CMakeFiles/rebuild_cache.dir

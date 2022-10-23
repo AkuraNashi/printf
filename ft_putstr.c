@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 03:14:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/23 20:34:04 by lcamilo-         ###   ########.fr       */
+/*   Created: 2022/10/16 23:15:08 by lcamilo-          #+#    #+#             */
+/*   Updated: 2022/10/23 20:33:10 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *s, ...)
+int	ft_putstr(char *s)
 {
-	va_list	args;
-	int		i;
+	int	i;
 
 	i = 0;
-	va_start(args, s);
-	while (*s)
-	{
-		if (*s == '%')
-		{
-			s++;
-			if (*s == 'c')
-				i += ft_putstr(va_arg(args, char *));
-		}
-		s++;
-	}
+	while (s[i])
+		write(1, &s[i++], 1);
 	return (i);
-}
-
-int	main(void)
-{
-	char *c = "temp";
-	ft_printf("%c", c);
-	return (0);
 }

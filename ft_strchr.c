@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+        */
+/*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 03:14:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/23 20:34:04 by lcamilo-         ###   ########.fr       */
+/*   Created: 2022/10/12 13:37:30 by lcamilo-          #+#    #+#             */
+/*   Updated: 2022/10/14 11:52:52 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *s, ...)
+char	*ft_strchr(const char *s, int c)
 {
-	va_list	args;
-	int		i;
-
-	i = 0;
-	va_start(args, s);
 	while (*s)
 	{
-		if (*s == '%')
-		{
-			s++;
-			if (*s == 'c')
-				i += ft_putstr(va_arg(args, char *));
-		}
+		if ((char)c == *s)
+			return ((char *)s);
 		s++;
 	}
-	return (i);
-}
-
-int	main(void)
-{
-	char *c = "temp";
-	ft_printf("%c", c);
+	if ((char)c == 0)
+		return ((char *)s);
 	return (0);
 }
