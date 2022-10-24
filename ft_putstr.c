@@ -3,20 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+        */
+/*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:15:08 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/24 15:45:08 by lcamilo-         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:56:36 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(char *s)
+int	ft_putstr(char *s)
 {
 	int	i;
 
 	i = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (s[i])
 		write(1, &s[i++], 1);
 	return (i);
