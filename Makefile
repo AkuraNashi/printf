@@ -6,7 +6,7 @@
 #    By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 20:24:22 by lcamilo-          #+#    #+#              #
-#    Updated: 2022/10/24 03:30:35 by lcamilo-         ###   ########.fr        #
+#    Updated: 2022/10/24 15:44:13 by lcamilo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CC		=	cc
 
 SRCS	=	ft_printf.c				\
 			ft_putchar.c			\
-			ft_strchr.c
+			ft_strchr.c				\
+			ft_putstr.c
 
 OBJS	=	${SRCS:.c=.o}
 

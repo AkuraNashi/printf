@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 20:28:11 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/24 15:42:52 by lcamilo-         ###   ########.fr       */
+/*   Created: 2022/10/16 23:15:08 by lcamilo-          #+#    #+#             */
+/*   Updated: 2022/10/24 15:45:08 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdio.h>
+int	ft_putstr_fd(char *s)
+{
+	int	i;
 
-int		ft_printf(const char *s, ...);
-int		ft_putchar(char c);
-//int		ft_putnbr(int n);
-int		ft_putstr(char *s);
-//size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-
-#endif
+	i = 0;
+	while (s[i])
+		write(1, &s[i++], 1);
+	return (i);
+}
