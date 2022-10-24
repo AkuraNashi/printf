@@ -6,7 +6,7 @@
 /*   By: lcamilo- <lcamilo-@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 03:14:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/23 20:34:04 by lcamilo-         ###   ########.fr       */
+/*   Updated: 2022/10/24 03:33:42 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,34 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int		i;
+	int		y;
 
 	i = 0;
+	y = 0;
 	va_start(args, s);
-	while (*s)
+	while (s[i])
 	{
-		if (*s == '%')
+		if (s[i] == '%')
 		{
-			s++;
-			if (*s == 'c')
-				i += ft_putstr(va_arg(args, char *));
+			i++;
+			if (s[i] == 'c')
+				y += ft_putchar(va_arg(args, int)) - 2;
+			else if (s[i] == '%')
+				y += ft_putchar('%') - 2;
+			if (ft_strchr("%diuxXpocs", s[i]))
+				i++;
 		}
-		s++;
+		if (s[i])
+			ft_putchar(s[i++]);
 	}
-	return (i);
+	va_end(args);
+	return (i + y);
 }
-
+/*
 int	main(void)
 {
-	char *c = "temp";
-	ft_printf("%c", c);
+	char s = 'c';
+	ft_printf("tttt %c", s);
 	return (0);
 }
+*/
