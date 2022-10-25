@@ -6,7 +6,7 @@
 #    By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 20:24:22 by lcamilo-          #+#    #+#              #
-#    Updated: 2022/10/24 21:04:20 by lcamilo-         ###   ########.fr        #
+#    Updated: 2022/10/25 18:38:20 by lcamilo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	ft_printf.c				\
 			ft_strchr.c				\
 			ft_putstr.c				\
 			ft_putnbr.c				\
+			ft_putunbr.c			\
 			ft_putnbr_base.c
 
 OBJS	=	${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 03:14:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/24 21:28:58 by lcamilo-         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:41:46 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,22 @@ int	ft_printf(const char *s, ...)
 			else if (s[i] == 'p')
 			{
 				y += ft_putstr("0x");
-				y += ft_putnbr_base(va_arg(args, int), "0123456789abcdef", 16);
+				y += ft_putnbr_base(va_arg(args, unsigned long long),
+						"0123456789abcdef", 16);
 			}
-			else if (s[i] == 'i')
-				y += ft_putnbr(va_arg(args, unsigned int));
+			else if (s[i] == 'd' || s[i] == 'i')
+				y += ft_putnbr(va_arg(args, int));
+			else if (s[i] == 'u')
+				y += ft_putunbr(va_arg(args, unsigned int));
+			else if (s[i] == 'x')
+				y += ft_putnbr_base(va_arg(args, unsigned int),
+						"0123456789abcdef", 16);
+			else if (s[i] == 'X')
+				y += ft_putnbr_base(va_arg(args, unsigned int),
+						"0123456789ABCDEF", 16);
 			else if (s[i] == '%')
 				y += ft_putchar('%');
-			if (ft_strchr("%diuxXpocs", s[i]))
+			if (ft_strchr("cspdiuxX%", s[i]))
 				i++;
 		}
 		else
@@ -49,12 +58,3 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (y);
 }
-
-int	main(void)
-{
-	//char s = 'x';
-	printf("Original : %p\n", (void *)ULONG_MAX);
-	ft_printf("La mienne : %p", (void *)ULONG_MAX);
-	return (0);
-}
-

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 20:28:11 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/25 18:38:24 by lcamilo-         ###   ########.fr       */
+/*   Created: 2022/10/16 23:37:34 by lcamilo-          #+#    #+#             */
+/*   Updated: 2022/10/25 00:41:11 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdio.h>
+static int	putunbr(unsigned int n, int i)
+{
+	unsigned int	nb;
 
-int		ft_printf(const char *s, ...);
-int		ft_putchar(char c);
-int		ft_putnbr(int n);
-int		ft_putunbr(unsigned int n);
-int		ft_putnbr_base(unsigned long long n, char *base, int nb);
-int		ft_putstr(char *s);
-char	*ft_strchr(const char *s, int c);
+	nb = n;
+	if (n > 9)
+		i = putunbr(n / 10, i);
+	i += ft_putchar(nb % 10 + '0');
+	return (i);
+}
 
-#endif
+int	ft_putunbr(unsigned int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		return (putunbr(n * -1, 1));
+	}
+	return (putunbr(n, 0));
+}

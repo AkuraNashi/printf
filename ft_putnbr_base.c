@@ -6,30 +6,26 @@
 /*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:37:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/24 21:30:01 by lcamilo-         ###   ########.fr       */
+/*   Updated: 2022/10/24 22:39:45 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	putnbr_base(unsigned int n, char *base, int size)
+static int	putnbr_base(unsigned long long n, char *base, int size, int i)
 {
-	unsigned int	nb;
-	int				i;
+	unsigned long long	nb;
 
-	i = 0;
 	nb = n;
 	if (n >= size)
-	{
-		putnbr_base(n / size, base, size);
-	}
+		i = putnbr_base(n / size, base, size, i);
 	i += ft_putchar(base[nb % size]);
 	return (i);
 }
 
-int	ft_putnbr_base(int n, char *base, int nb)
+int	ft_putnbr_base(unsigned long long n, char *base, int nb)
 {
 	if (n < 0)
-		return (putnbr_base(n * -1, base, nb) + 1);
-	return (putnbr_base(n, base, nb));
+		return (putnbr_base(n * -1, base, nb, 0) + 1);
+	return (putnbr_base(n, base, nb, 0));
 }

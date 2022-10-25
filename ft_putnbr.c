@@ -6,34 +6,29 @@
 /*   By: lcamilo- <lcamilo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:37:34 by lcamilo-          #+#    #+#             */
-/*   Updated: 2022/10/24 20:56:42 by lcamilo-         ###   ########.fr       */
+/*   Updated: 2022/10/25 00:38:39 by lcamilo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	putnbr(unsigned int n)
+static int	putnbr(unsigned int n, int i)
 {
 	unsigned int	nb;
-	int				i;
 
-	i = 0;
 	nb = n;
 	if (n > 9)
-		putnbr(n / 10);
+		i = putnbr(n / 10, i);
 	i += ft_putchar(nb % 10 + '0');
 	return (i);
 }
 
 int	ft_putnbr(int n)
 {
-	int	negative;
-
-	negative = 1;
 	if (n < 0)
 	{
 		ft_putchar('-');
-		negative *= -1;
+		return (putnbr(n * -1, 1));
 	}
-	return (putnbr(n * negative));
+	return (putnbr(n, 0));
 }
